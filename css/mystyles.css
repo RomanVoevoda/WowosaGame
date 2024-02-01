@@ -1,0 +1,98 @@
+body, map, area {
+  all: unset;
+}
+
+.flex__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  background-color: #222722;
+}
+
+.header {
+  width: 1920px;
+  height: 100px;
+  display: grid;
+  grid-template-columns: 710px 500px 269px 401px 40px;
+  grid-template-areas: '.logo.mediaPlayer.';
+  margin: 10px 0px;
+  background-color: #222722;
+}
+
+.main__section {
+  width: 1920px;
+  height: 880px;
+  margin: 0px;
+  display: grid;
+  grid-template-columns: 476px 974px 470px;
+  grid-template-rows: 47px 789px 44px;
+  grid-template-areas: 'leftBar topBar rightBar' 'leftBar gameWindow rightBar' 'leftBar footerBar rightBar';
+  background-color: black;
+
+}
+
+.footer {
+  width: 1920px;
+  height: 120px;
+  margin: 0px;
+  background-color: #222722;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#logo {
+  width: 500px;
+  height: 100px;
+  grid-area: logo;
+}
+
+.social__media__logo {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+}
+
+.social__media__logo:hover {
+  transform: translate(0px, -5px);
+}
+
+.image__link {
+  border-radius: 50%;
+  margin-left: 30px;
+  margin-right: 30px;
+}
+
+#left__bar {
+  width: 476px;
+  height: 880px;
+  grid-area: leftBar;
+  margin: 0px;
+}
+
+#footer__bar {
+  width: 974px;
+  height: 44px;
+  grid-area: footerBar;
+  margin: 0px;
+}
+
+#right__bar {
+  width: 470px;
+  height: 880px;
+  grid-area: rightBar;
+  margin: 0px;
+}
+
+#top__bar {
+  width: 974px;
+  height: 47px;
+  grid-area: topBar;
+  margin: 0px;
+}
+
+area{
+  cursor: pointer;
+}

@@ -1,0 +1,29 @@
+#dialogue__container__page__2 {
+  display: none;
+}
+
+#game__action__container__page__2 {
+  display: none;
+}
+
+#hidden__game__action__container__page__2 {
+  display: none;
+}
+
+#dialogue__container__page__3 {
+  display: none;
+}
+
+#game__action__container__page__3 {
+  display: none;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+#game__action__container__page__4 {
+  display: none;
+}
+
+#dialogue__container__page__4 {
+  display: none;
+}

@@ -1,0 +1,201 @@
+.game__container {
+  display: none;
+  width: inherit;
+  height: inherit;
+  border-radius: inherit;
+}
+
+.game__container.on {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: inherit;
+  height: inherit;
+  border-radius: inherit;
+}
+
+.game__image__container {
+  width: 974px;
+  height: 496px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-width: 5px;
+  border-color: black;
+  border-style: hidden;
+  border-radius: 40px;
+  border-top-left-radius: 40px;
+}
+
+#game__image {
+  width: 974px;
+  height: 496px;
+  border-radius: inherit;
+}
+
+.dialogue__container {
+  width: 954px;
+  margin: 10px 10px 0 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.dialogue {
+  font-size: 20px;
+  font-family:'Franklin Gothic Medium';
+  color: rgb(207,150,55);
+}
+
+.game__action__container {
+  width: 934px;
+  height: 150px;
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  justify-content: flex-start;
+  margin: 0 10px 0 30px;
+}
+
+.action__form {
+  height: 150px;
+}
+
+.game__input {
+  font-size: 20px;
+  font-family:'Franklin Gothic Medium';
+  color: rgb(207,150,55);
+  background-color: #161105;
+  border: 4px;
+  border-style: solid;
+  border-color: rgb(207,150,55);
+  border-radius: 10px;
+  height: 30px;
+  margin: 0 10px 0 10px;
+}
+
+.game__input:focus {
+  outline: 0;
+}
+
+.game__button {
+  font-size: 20px;
+  font-family:'Franklin Gothic Medium';
+  color: rgb(207,150,55);
+  background-color: #161105;
+  border: 4px;
+  border-style: solid;
+  border-color: rgb(207,150,55);
+  border-radius: 5px;
+  height: 40px;
+}
+
+.game__button:hover {
+  cursor: pointer;
+  box-shadow: 1px 2px 18px 5px rgba(207,150,55,0.5);
+}
+
+#grid__special__form {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  width: 934px;
+  height: 170px;
+  grid-template-areas:
+    'strenghtLabel perceptionLabel enduranceLabel charismaLabel intilligenceLabel agilityLabel luckLabel'
+    'strenghtInput perceptionInput enduranceInput charismaInput intilligenceInput agilityInput inputLuck'
+    '. submitSpecial submitSpecial submitSpecial submitSpecial submitSpecial .';
+  grid-template-columns: 100px 140px 160px 120px 125px 120px 100px;
+}
+
+#strenght__label {
+ grid-area: strenghtLabel;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+}
+#input__strength {
+  grid-area: strenghtInput;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+ }
+#perception__label {
+  grid-area: perceptionLabel;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#input__perception {
+  grid-area: perceptionInput;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#endurance__label {
+  grid-area: enduranceLabel;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#input__endurance {
+  grid-area: enduranceInput;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#charisma__label {
+  grid-area: charismaLabel;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#input__charisma {
+  grid-area: charismaInput;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#intilligence__label {
+  grid-area: intilligenceLabel;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#input__intelligence {
+  grid-area: intilligenceInput;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#agility__label {
+  grid-area: agilityLabel;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#input__agility {
+  grid-area: agilityInput;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#luck__label {
+  grid-area: luckLabel;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#input__luck {
+  grid-area: inputLuck;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#submit__special {
+  grid-area: submitSpecial;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}

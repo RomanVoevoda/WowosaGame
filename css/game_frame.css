@@ -1,0 +1,114 @@
+.game__window.on {
+  width: 974px;
+  height: 770px;
+  margin: 0px;
+  border-width: 5px;
+  border-color: black;
+  border-style: hidden;
+  border-top-right-radius: 5%;
+  border-top-left-radius: 5%;
+  border-bottom-right-radius: 10%;
+  border-bottom-left-radius: 10%;
+  grid-area: gameWindow;
+  box-shadow: 1px 2px 18px 5px rgba(207,150,55,0.5);
+  background-color: #161105;
+}
+
+.game__window.loading {
+  width: 974px;
+  height: 770px;
+  margin: 0px;
+  border-width: 5px;
+  border-color: black;
+  border-style: solid;
+  border-top-right-radius: 5%;
+  border-top-left-radius: 5%;
+  border-bottom-right-radius: 10%;
+  border-bottom-left-radius: 10%;
+  grid-area: gameWindow;
+  background-color: black;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.game__window {
+  width: 974px;
+  height: 770px;
+  margin: 0px;
+  border-width: 5px;
+  border-color: black;
+  border-style: solid;
+  border-top-right-radius: 5%;
+  border-top-left-radius: 5%;
+  border-bottom-right-radius: 10%;
+  border-bottom-left-radius: 10%;
+  grid-area: gameWindow;
+  background-color: black;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+#death__video {
+  width: inherit;
+  height: inherit;
+  display: none;
+  border: inherit;
+  border-radius: inherit;
+}
+
+.start__game {
+  cursor: pointer;
+  background-color: black;
+  width: 360px;
+  height: 140px;
+  border-width: 6px;
+  border-style: solid;
+  border-radius: 15px;
+  border-color: rgb(207,150,55);
+  display: grid;
+  grid-template-areas:
+    'startButton startButtonTextTop'
+    'startButton startButtonTextBottom';
+  justify-content: center;
+  align-items: center;
+}
+.start__game:hover {
+  box-shadow: 1px 2px 18px 5px rgba(207,150,55,0.75);
+}
+.start__game.off {
+  display: none;
+}
+.start__button__text {
+  font-size: 60px;
+  color: rgb(207,150,55);
+  font-family: Cambria;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0px;
+}
+#start__button__text__top {
+  grid-area: startButtonTextTop;
+  width: 220px;
+  height: 70px;
+}
+#start__button__text__bottom {
+  grid-area: startButtonTextBottom;
+  width: 220px;
+  height: 70px;
+}
+#start__button {
+  background-color: black;
+  border: 0;
+  color: rgb(207,150,55);
+  font-size: 80px;
+  cursor: pointer;
+  padding: 0 10px;
+  margin: 0 10px;
+  grid-area: startButton;
+}
+#start__button:focus {
+  outline: 0;
+}

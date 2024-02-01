@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="ru-RU">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="keywords" content="рпг, пошаговая рпг, рпг 2024, игра, браузерная игра, wowosa, рогалик, текстовая рпг, ретрофутуризм, fallout">
+  <meta name="description" content="WowosaGame 3 это пошаговая рпг в стиле ретрофутуризма, вдохновленная игрой Fallout. Игра распространяется на некоммерческой основе,
+  события игры посвящены выживанию на радиоактивных пустошах и от ваших навоков полностью зависит содержание игры.">
+  <meta name="author" content="Воевода">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/mystyles.css">
+  <link rel="stylesheet" href="../css/audioplayer.css">
+  <link rel="stylesheet" href="../css/game_frame.css">
+  <link rel="stylesheet" href="../css/loading_window.css">
+  <link rel="stylesheet" href="../css/game.css">
+  <link rel="stylesheet" href="../css/game_pages_list.css">
+  <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!--Ссылка на библиотеку Font Awesome для кнопочек плеера-->
+  <title>Wowosa Game 3</title>
+</head>
+
+
+<body class="flex__container">
+  <div class="header">
+    <img src="../images/wowosagame_logo500x100_v3.png" alt="Логотип Игры" id="logo">
+
+    <div class="audio__player__container">
+      <div class="audio__image__container">
+        <img src="../images/music_cover_100x100.jpg" alt="Обложка для музыки" class="music__cover">
+      </div>
+
+      <div id="audio__info__container">
+        <h4 id="music__title">Главная Тема</h4>
+        <div class="audio__progress__container">
+          <div class="progress"></div>
+        </div>
+      </div>
+
+      <audio src="../media/music/Главная Тема.ogg" id="audio"></audio>
+      <div id="audio__controls__container">
+        <button id="prev" class="action__btn">
+          <i class="fas fa-backward"></i>
+        </button>
+        <button id="play" class="action__btn action__btn__big">
+          <i class="fas fa-play"></i>
+        </button>
+        <button id="next" class="action__btn">
+          <i class="fas fa-forward"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="main__section">
+    <audio  src="../media/sounds/court_click.wav" id="clickSound"></audio>
+    <img src="../images/pipboy_left_bar_476x880.png" alt="боковая панель" id="left__bar" usemap="#button__map">
+    <map class="button__map">
+      <area shape="circle" coords="153,647,23" alt="кнопка статуса" onclick="switchWayById('left__bar', '../images/pipboy_left_bar_476x880_status_button_active.png')">
+      <area shape="circle" coords="154,751,23" alt="кнопка карты" onclick="switchWayById('left__bar', '../images/pipboy_left_bar_476x880_map_button_active.png')">
+      <area shape="circle" coords="154,803,23" alt="кнопка записей" onclick="switchWayById('left__bar', '../images/pipboy_left_bar_476x880_archives_button_active.png')">
+      <area shape="circle" coords="155,855,23" alt="кнопка закрытия"
+      onclick="switchWayByIdWithTimeout('left__bar', '../images/pipboy_left_bar_476x880_close_button_active.png', 'left__bar', '../images/pipboy_left_bar_476x880.png')">
+    </map>
+    <img src="../images/pipboy_footer_bar_974x44.png" alt="нижняя панель" id="footer__bar">
+    <img src="../images/pipboy_right_bar_470x880.png" alt="правая панель" id="right__bar">
+    <img src="../images/pipboy_top_bar_974x47.png" alt="верхняя панель" id="top__bar">
+
+
+    <div class="game__window">
+      <video src="../media/videos/deathscene.mp4" id="death__video"></video>
+      <audio src="../media/sounds/start_game.wav" id="startSound"></audio>
+      <div class="start__game" onclick="loadingGame()">
+        <button id="start__button">
+          <i class="fas fa-play"></i>
+        </button>
+        <p class="start__button__text" id="start__button__text__top">НАЧАТЬ</p>
+        <p class="start__button__text" id="start__button__text__bottom">ИГРУ</p>
+      </div>
+
+
+      <div class="loading__info__container">
+        <p id="loading__header">Загрузка.</p>
+        <p id="loading__text">Заставляем фиксиков работать.</p>
+        <audio src="../media/music/загрузка.ogg" id="loading_sound" autoplay muted></audio>
+        <div class="loading__progress__container">
+          <div class="loading__progress"></div>
+        </div>
+      </div>
+
+
+      <div class="game__container" id="page__1">
+        <audio src="../media/sounds/transfer_regiment.wav" id="gameClickSound"></audio>
+
+        <div class="game__image__container">
+          <img src="../images/wowosa_character_974x496.png" alt="Игровое изображение" id="game__image">
+        </div>
+      
+        <div class="dialogue__container" id="dialogue__container__page__1">
+          <p class="dialogue" id="dialogue__text"> &nbsp; &nbsp; Добро пожаловать в лагерь Наварро, назови свое имя штатский!</p>
+        </div>
+
+        <div class="game__action__container" id="game__action__container__page__1">
+          <p class="dialogue">&gt; &nbsp; &nbsp;</p>
+          <form class="action__form">
+            <input type="text" id="character__name" name="character__name" maxlength="20" class="game__input">
+            <button type="button" class="game__button" id="submit__button" onclick="getUserName()">Подтвердить</button>
+          </form>
+        </div>
+
+        <!--Дальше идут игровые контейнеры для других страниц, их отображение меняется функциями в game.js--> 
+
+        <div class="dialogue__container" id="dialogue__container__page__2">
+          <p class="dialogue" id="dialogue__text__2"></p>
+        </div>
+
+        <div class="game__action__container" id="game__action__container__page__2">
+          <p class="dialogue">&gt; &nbsp; &nbsp;</p>
+          <form class="action__form">
+            <input type="text" id="character__age" name="character__age" maxlength="3" size = "3" class="game__input">
+            <button type="button" class="game__button" id="submit__age" onclick="getUserAge()">Подтвердить</button>
+          </form>
+        </div>
+        <div class="game__action__container" id="hidden__game__action__container__page__2">
+          <form class="action__form">
+            <button type="button" id="yes__button" class="game__button" 
+            onclick="nextPage('page__3',
+            '../images/special_974x496.png',
+            dialogueContainerPage2,
+            hiddenActionContainerPage2,
+            dialogueContainerPage3,
+            actionContainerPage3,
+            dialogueTextPage3,
+            `&nbsp; &nbsp; Отлично ${wowosaName}, я сержант Вовоса и с этого дня ты в моем подчинении! Расскажи о своих навыках. Вы находитесь в системе распределения характеристик SPECIAL, начальный параметр характеристики равен 4, на 7 характеристик вам дается лишь 40 очков, распределяйте их с умом!`);">Да</button>
+            <button type="button" class="game__button" id="no__button" onclick="notPassedAgeLimit()">Нет</button>
+          </form>
+        </div>
+
+        <!--Страница 3(SPECIAL)-->
+
+        <div class="dialogue__container" id="dialogue__container__page__3">
+          <p class="dialogue" id="dialogue__text__3"></p>
+        </div>
+
+        <div class="game__action__container" id="game__action__container__page__3">
+          <form class="action__form" id="grid__special__form">
+            <label for="input__strength" class="game__input" id="strenght__label">Сила:</label>
+            <select id="input__strength" name="input__strength" size = "1" class="game__input">
+              <option value="1" class="game__input">1</option>
+              <option value="2" class="game__input">2</option>
+              <option value="3" class="game__input">3</option>
+              <option value="4" class="game__input">4</option>
+              <option value="5" class="game__input">5</option>
+              <option value="6" class="game__input">6</option>
+              <option value="7" class="game__input">7</option>
+              <option value="8" class="game__input">8</option>
+              <option value="9" class="game__input">9</option>
+              <option value="10" class="game__input">10</option>
+            </select>
+            <label for="input__perception" class="game__input" id="perception__label">Восприятие:</label>
+            <select id="input__perception" name="input__perception" size = "1" class="game__input">
+              <option value="1" class="game__input">1</option>
+              <option value="2" class="game__input">2</option>
+              <option value="3" class="game__input">3</option>
+              <option value="4" class="game__input">4</option>
+              <option value="5" class="game__input">5</option>
+              <option value="6" class="game__input">6</option>
+              <option value="7" class="game__input">7</option>
+              <option value="8" class="game__input">8</option>
+              <option value="9" class="game__input">9</option>
+              <option value="10" class="game__input">10</option>
+            </select>
+            <label for="input__endurance" class="game__input" id="endurance__label">Выносливость:</label>
+            <select id="input__endurance" name="input__endurance" size = "1" class="game__input">
+              <option value="1" class="game__input">1</option>
+              <option value="2" class="game__input">2</option>
+              <option value="3" class="game__input">3</option>
+              <option value="4" class="game__input">4</option>
+              <option value="5" class="game__input">5</option>
+              <option value="6" class="game__input">6</option>
+              <option value="7" class="game__input">7</option>
+              <option value="8" class="game__input">8</option>
+              <option value="9" class="game__input">9</option>
+              <option value="10" class="game__input">10</option>
+            </select>
+            <label for="input__charisma" class="game__input" id="charisma__label">Харизма:</label>
+            <select id="input__charisma" name="input__charisma" size = "1" class="game__input">
+              <option value="1" class="game__input">1</option>
+              <option value="2" class="game__input">2</option>
+              <option value="3" class="game__input">3</option>
+              <option value="4" class="game__input">4</option>
+              <option value="5" class="game__input">5</option>
+              <option value="6" class="game__input">6</option>
+              <option value="7" class="game__input">7</option>
+              <option value="8" class="game__input">8</option>
+              <option value="9" class="game__input">9</option>
+              <option value="10" class="game__input">10</option>
+            </select>
+            <label for="input__intelligence" class="game__input" id="intilligence__label">Интеллект:</label>
+            <select id="input__intelligence" name="input__intelligence" size = "1" class="game__input">
+              <option value="1" class="game__input">1</option>
+              <option value="2" class="game__input">2</option>
+              <option value="3" class="game__input">3</option>
+              <option value="4" class="game__input">4</option>
+              <option value="5" class="game__input">5</option>
+              <option value="6" class="game__input">6</option>
+              <option value="7" class="game__input">7</option>
+              <option value="8" class="game__input">8</option>
+              <option value="9" class="game__input">9</option>
+              <option value="10" class="game__input">10</option>
+            </select>
+            <label for="input__agility" class="game__input" id="agility__label">Ловкость:</label>
+            <select id="input__agility" name="input__agility" size = "1" class="game__input">
+              <option value="1" class="game__input">1</option>
+              <option value="2" class="game__input">2</option>
+              <option value="3" class="game__input">3</option>
+              <option value="4" class="game__input">4</option>
+              <option value="5" class="game__input">5</option>
+              <option value="6" class="game__input">6</option>
+              <option value="7" class="game__input">7</option>
+              <option value="8" class="game__input">8</option>
+              <option value="9" class="game__input">9</option>
+              <option value="10" class="game__input">10</option>
+            </select>
+            <label for="input__luck" class="game__input" id="luck__label">Удача:</label>
+            <select id="input__luck" name="input__luck" size = "1" class="game__input">
+              <option value="1" class="game__input">1</option>
+              <option value="2" class="game__input">2</option>
+              <option value="3" class="game__input">3</option>
+              <option value="4" class="game__input">4</option>
+              <option value="5" class="game__input">5</option>
+              <option value="6" class="game__input">6</option>
+              <option value="7" class="game__input">7</option>
+              <option value="8" class="game__input">8</option>
+              <option value="9" class="game__input">9</option>
+              <option value="10" class="game__input">10</option>
+            </select>
+            <button type="button" class="game__button" id="submit__special" 
+            onclick="setSpecialParametrs()">Рассказать о своих навыках</button>
+          </form>
+        </div>
+
+        <!--4 страница-->
+
+        <div class="dialogue__container" id="dialogue__container__page__4">
+          <p class="dialogue" id="dialogue__text__4"></p>
+        </div>
+
+        <div class="game__action__container" id="game__action__container__page__4">
+          <p class="dialogue">&nbsp; &nbsp;</p>
+          <form class="action__form">
+            <button type="button" class="game__button" onclick="nextPage()">Окей, я в деле</button>
+            <button type="button" class="game__button" onclick="death()">Слушать пса Анклава? Отправляйся к чёрту сержант</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="footer">
+    <a href="https://boosty.to/romanvoevoda" target="_blank" class="image__link">
+      <img src="../images/boosty_logo_100x100.png" alt="Поддержи проект на Boosty!" title="Поддержи обновления WowosaGame на Бусти!" class="social__media__logo">
+    </a>
+    <a href=https://vk.com/romanvoevoda target="_blank" class="image__link">
+      <img src="../images/vk_logo_100_100.png" alt="Группа автора игры в ВК" title="Группа автора игры в ВК" class="social__media__logo">
+    </a>
+    <a href=https://discord.com/invite/gcH932P target="_blank" class="image__link">
+      <img src="../images/discord_logo_100x100.png" alt="Дискорд сервер автора игры" title="Дискорд сервер автора игры" class="social__media__logo">
+    </a>
+  </div>
+
+
+  <script src="../js/left_bar_buttons.js"></script>
+  <script src="../js/audioplayer.js"></script>
+  <script src="../js/loading.js"></script>
+  <script src="../js/game.js"></script>
+  <noscript>Ваш браузер не поддерживает JavaScript</noscript>
+</body>
+</html>
