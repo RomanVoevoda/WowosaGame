@@ -84,7 +84,7 @@ function checkUserName(){
   } else if ((wowosaName === null || wowosaName === '') && (click === 2)) {
     changeGameText(dialogueText, ' &nbsp; &nbsp; Рядовой, вы все еще без имени, я дал вам прямой приказ ввести имя, НЕ СМЕЙ ПОКАЗЫВАТЬСЯ МНЕ НА ГЛАЗА, ПОКА НЕ ВВЕДЕШЬ ИМЯ');
   } else if ((wowosaName === null || wowosaName === '') && (click === 3)) {   
-    wowosaName = 'Рядовой Идиот';
+    wowosaName = 'Идиот';
     if(wowosaName !== null && wowosaName !== '' && wowosaName !== undefined) {
       nextPage('page__2', 
         "../images/wowosa_character_974x496.png",
