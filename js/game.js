@@ -65,15 +65,24 @@ function turnOffGame() {
 
 deathVideo.addEventListener("ended", turnOffGame)
 
+//Получение имени игрока
+function changeGameText(x, text){
+  x.innerHTML = text;
+}
+
 function getUserName(){
   gameClickSound.play();
   wowosaName = document.getElementById('character__name').value;
 
+  checkUserName();
+}
+
+function checkUserName(){
   if ((wowosaName === null || wowosaName === '') && (click === 1)) {
-    dialogueText.innerHTML = ' &nbsp; &nbsp; ИДИОТ! ТЫ НЕ МОЖЕШЬ ВВЕСТИ СОБСТВЕННОЕ ИМЯ?!?! Давай представим, что ты ПОУМНЕЛ, введи свое имя, нажимая БУКОВКИ на клавиатуре:';
+    changeGameText(dialogueText, ' &nbsp; &nbsp; ИДИОТ! ТЫ НЕ МОЖЕШЬ ВВЕСТИ СОБСТВЕННОЕ ИМЯ?!?! Давай представим, что ты ПОУМНЕЛ, введи свое имя, нажимая БУКОВКИ на клавиатуре:');
     wowosaName = document.getElementById('character__name').value;
   } else if ((wowosaName === null || wowosaName === '') && (click === 2)) {
-    dialogueText.innerHTML = ' &nbsp; &nbsp; Рядовой, вы все еще без имени, я дал вам прямой приказ ввести имя, НЕ СМЕЙ ПОКАЗЫВАТЬСЯ МНЕ НА ГЛАЗА, ПОКА НЕ ВВЕДЕШЬ ИМЯ';
+    changeGameText(dialogueText, ' &nbsp; &nbsp; Рядовой, вы все еще без имени, я дал вам прямой приказ ввести имя, НЕ СМЕЙ ПОКАЗЫВАТЬСЯ МНЕ НА ГЛАЗА, ПОКА НЕ ВВЕДЕШЬ ИМЯ');
   } else if ((wowosaName === null || wowosaName === '') && (click === 3)) {   
     wowosaName = 'Рядовой Идиот';
     if(wowosaName !== null && wowosaName !== '' && wowosaName !== undefined) {
@@ -98,20 +107,24 @@ function getUserName(){
         dialogueTextPage2,
         ` &nbsp; &nbsp; ${wowosaName}, напиши свой возраст цифрами и мы узнаем, готов ли ты к службе:`);
     }
-    return wowosaName;
   }
 }
 
+//Получение возраста игрока
 function getUserAge() {
   gameClickSound.play();
   userage = Number( document.getElementById('character__age').value );
 
+  checkUserAge();
+}
+
+function checkUserAge(){
   if ( isNaN(userage) ) {
-    dialogueTextPage2.innerHTML = '&nbsp; &nbsp; ЦИ-ФРА-МИ, ЦИФРАМИ ИДИОТ!';
+    changeGameText(dialogueTextPage2, '&nbsp; &nbsp; ЦИ-ФРА-МИ, ЦИФРАМИ ИДИОТ!');
   } else if(userage < 1) {
-    dialogueTextPage2.innerHTML = '&nbsp; &nbsp; Хочешь сказать ты ещё не родился? И как же ты стоишь предо мной? Назови реальный возраст.';
+    changeGameText(dialogueTextPage2, '&nbsp; &nbsp; Хочешь сказать ты ещё не родился? И как же ты стоишь предо мной? Назови реальный возраст.');
   }else if (userage < 18) {
-    dialogueTextPage2.innerHTML = '&nbsp; &nbsp; Ты ещё совсем мал и умрешь в пустошах без помощи. Родители разрешили тебе играть?';
+    changeGameText(dialogueTextPage2, '&nbsp; &nbsp; Ты ещё совсем мал и умрешь в пустошах без помощи. Родители разрешили тебе играть?');
     actionContainerPage2.style.display = "none";
     hiddenActionContainerPage2.style.display = "flex";
   } else {
@@ -130,11 +143,11 @@ function getUserAge() {
 
 function notPassedAgeLimit() {
   gameClickSound.play();
-  dialogueTextPage2.innerHTML = '&nbsp; &nbsp; Ты ещё совсем мал и умрешь в пустошах без помощи. Игровые процессы выключаются.';
+  changeGameText(dialogueTextPage2, '&nbsp; &nbsp; Ты ещё совсем мал и умрешь в пустошах без помощи. Игровые процессы выключаются.');
   setTimeout(turnOffGame, 3000);
 }
 
-function setSpecialParametrs() {
+function getSpecialParametrs() {
   gameClickSound.play();
   let inputStrenght = document.getElementById("input__strength").value;
   let inputPerception = document.getElementById("input__perception").value;
@@ -153,8 +166,12 @@ function setSpecialParametrs() {
   luck = Number(inputLuck);
   special = strenght + perception + endurance + charisma + intelligence + agility + luck;
 
+  checkSpecialParametrs();
+}
+
+function checkSpecialParametrs(){
   if (special > specialPoints) {
-    dialogueTextPage3.innerHTML = "&nbsp; &nbsp; Это ты не умеешь считать или я? Не больше 40 очков."
+    changeGameText(dialogueTextPage3, "&nbsp; &nbsp; Это ты не умеешь считать или я? Не больше 40 очков.");
   } else {
     special = strenght + perception + endurance + charisma + intelligence + agility + luck;//Вычисление всех потраченных очков
     hitPoints = Math.round(((endurance * 2) + (strenght / 2)) * 100);
