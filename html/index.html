@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="../css/loading_window.css">
   <link rel="stylesheet" href="../css/game.css">
   <link rel="stylesheet" href="../css/game_pages_list.css">
+  <link rel="stylesheet" href="../css/game_info_windows.css">
   <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <!--Ссылка на библиотеку Font Awesome для кнопочек плеера-->
@@ -56,11 +57,35 @@
     <audio  src="../media/sounds/court_click.wav" id="clickSound"></audio>
     <img src="../images/pipboy_left_bar_476x880.png" alt="боковая панель" id="left__bar" usemap="#button__map">
     <map class="button__map">
-      <area shape="circle" coords="153,647,23" alt="кнопка статуса" onclick="switchWayById('left__bar', '../images/pipboy_left_bar_476x880_status_button_active.png')">
-      <area shape="circle" coords="154,751,23" alt="кнопка карты" onclick="switchWayById('left__bar', '../images/pipboy_left_bar_476x880_map_button_active.png')">
-      <area shape="circle" coords="154,803,23" alt="кнопка записей" onclick="switchWayById('left__bar', '../images/pipboy_left_bar_476x880_archives_button_active.png')">
-      <area shape="circle" coords="155,855,23" alt="кнопка закрытия"
-      onclick="switchWayByIdWithTimeout('left__bar', '../images/pipboy_left_bar_476x880_close_button_active.png', 'left__bar', '../images/pipboy_left_bar_476x880.png')">
+      <area shape="circle" coords="153,647,23" alt="кнопка статуса" id="status__button" onclick="openInfoWindow(
+        gameStatusWindow, 
+        gameAutomapsWindow, 
+        gameArchivesWindow, 
+        gameStatusText, 
+        `<p>Персонаж ${wowosaName}<br><br> Уровень:&nbsp;${lvl}<br><br> Опыт:&nbsp;${expirience}<br><br> Здоровье:&nbsp;${hitPoints}<br><br> Сила:&nbsp;${strenght}<br><br> Восприятие:&nbsp;${perception}<br><br> Выносливость:&nbsp;${endurance}<br><br> Харизма:&nbsp;${charisma}<br><br> Интеллект:&nbsp;${intelligence}<br><br> Ловкость:&nbsp;${agility}<br><br> Удача:&nbsp;${luck}</p>`, 
+        'left__bar', 
+        '../images/pipboy_left_bar_476x880_status_button_active.png')">
+      <area shape="circle" coords="154,751,23" alt="кнопка карты" id="map__button" onclick="openInfoWindowWithoutText(
+        gameAutomapsWindow, 
+        gameStatusWindow, 
+        gameArchivesWindow, 
+        'left__bar', 
+        '../images/pipboy_left_bar_476x880_map_button_active.png')">
+      <area shape="circle" coords="154,803,23" alt="кнопка записей" id="archives__button" onclick="openInfoWindowWithoutText(
+        gameArchivesWindow, 
+        gameStatusWindow, 
+        gameAutomapsWindow, 
+        'left__bar', 
+        '../images/pipboy_left_bar_476x880_archives_button_active.png')">
+      <area shape="circle" coords="155,855,23" alt="кнопка закрытия" id="close__button"
+      onclick="closeInfoWindows(
+        gameStatusWindow, 
+        gameAutomapsWindow, 
+        gameArchivesWindow,
+        'left__bar', 
+        '../images/pipboy_left_bar_476x880_close_button_active.png', 
+        'left__bar', 
+        '../images/pipboy_left_bar_476x880.png')">
     </map>
     <img src="../images/pipboy_footer_bar_974x44.png" alt="нижняя панель" id="footer__bar">
     <img src="../images/pipboy_right_bar_470x880.png" alt="правая панель" id="right__bar">
@@ -92,6 +117,20 @@
       <div class="game__container" id="page__1">
         <audio src="../media/sounds/transfer_regiment.wav" id="gameClickSound"></audio>
 
+        <!--Вначале контейнеры по кнопкам слева от экрана-->
+        <div class="game__status__container">
+          <div class="game__info__text" id="game__status__list"></div>
+          <img src="../images/game_stats_image_487x770.png" id="game__status__image">
+        </div>
+        <div class="game__automaps__container">
+          <p class="game__info__header">НАСТРОЙКИ</p>
+        </div>
+        <div class="game__archives__container">
+          <p class="game__info__header">СПИСОК ЗАДАНИЙ</p>
+        </div>
+
+
+        <!--Основная игра-->
         <div class="game__image__container">
           <img src="../images/wowosa_character_974x496.png" alt="Игровое изображение" id="game__image">
         </div>

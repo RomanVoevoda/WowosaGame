@@ -11,7 +11,11 @@
   align-items: flex-start;
   width: inherit;
   height: inherit;
+  border-width: inherit;
+  border-style:inherit;
   border-radius: inherit;
+  position: static;
+  z-index: 1;
 }
 
 .game__image__container {
@@ -23,13 +27,13 @@
   border-width: 5px;
   border-color: black;
   border-style: hidden;
-  border-radius: 40px;
-  border-top-left-radius: 40px;
+  border-radius: 45px;
 }
 
 #game__image {
-  width: 974px;
-  height: 496px;
+  width: 954px;
+  height: 476px;
+  padding: 10px;
   border-radius: inherit;
 }
 

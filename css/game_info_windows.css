@@ -1,0 +1,46 @@
+.game__status__container, .game__automaps__container, .game__archives__container{
+  margin: 0px;
+  padding: 0px;
+  width: inherit;
+  height: inherit;
+  border-width: inherit;
+  border-style:inherit;
+  border-radius: inherit;
+  display: none;
+  position: absolute;
+  z-index: 2;
+  background-color: #161105;
+}
+
+.game__automaps__container, .game__archives__container {
+  justify-content: center;
+}
+.game__info__header {
+  font-size: 30px;
+  font-family:'Franklin Gothic Medium';
+  color: rgb(207,150,55);
+  justify-content: center;
+  align-items: center;
+}
+
+.game__info__text {
+  font-size: 25px;
+  font-family:'Franklin Gothic Medium';
+  color: rgb(207,150,55);
+}
+
+#game__status__list{
+  width: 487px;
+  height: 770px;
+  display: flex;
+  padding-left: 70px;
+  padding-top: 50px;
+}
+
+#game__status__image{
+  width: 477px;
+  height: 760px;
+  border-width: inherit;
+  border-style:inherit;
+  border-radius: inherit;
+}
