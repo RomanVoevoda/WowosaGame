@@ -42,14 +42,14 @@ let dialogueTextPage4 = document.getElementById("dialogue__text__4");
 let click = 1;
 submitName.addEventListener('click', () => ++click );
 
-function nextPage(pageid, imgsrc, container1, container2, container3, container4, textContainer, text) {
+function nextPage(pageid, imgsrc, container1, container2, container3, container4) {
+  updateVariablesValues();
   gamePage.setAttribute("id", pageid);
   gameImage.setAttribute("src", imgsrc);
   container1.style.display = "none";
   container2.style.display = "none";
   container3.style.display = "flex";
   container4.style.display = "flex";
-  textContainer.innerHTML = text;
 }
 
 function death() {
@@ -65,6 +65,32 @@ function turnOffGame() {
 
 deathVideo.addEventListener("ended", turnOffGame)
 
+//Обновление данных игрока
+function updateVariablesValues(){
+  document.getElementById('wowosaName__info').innerHTML = `${wowosaName}`;
+  document.getElementById('wowosaName__page__2').innerHTML = `${wowosaName}`;
+  document.getElementById('wowosaName__page__3').innerHTML = `${wowosaName}`;
+  document.getElementById('wowosaName__page__4').innerHTML = `${wowosaName}`;
+  document.getElementById('lvl__info').innerHTML = `${lvl}`;
+  document.getElementById('expirience__info').innerHTML = `${expirience}`;
+  document.getElementById('hitPoints__info').innerHTML = `${hitPoints}`;
+  document.getElementById('strenght__info').innerHTML = `${strenght}`;
+  document.getElementById('perception__info').innerHTML = `${perception}`;
+  document.getElementById('endurance__info').innerHTML = `${endurance}`;
+  document.getElementById('charisma__info').innerHTML = `${charisma}`;
+  document.getElementById('intelligence__info').innerHTML = `${intelligence}`;
+  document.getElementById('agility__info').innerHTML = `${agility}`;
+  document.getElementById('luck__info').innerHTML = `${luck}`;
+
+  document.getElementById('strenght__page__4').innerHTML = `${strenght}`;
+  document.getElementById('perception__page__4').innerHTML = `${perception}`;
+  document.getElementById('endurance__page__4').innerHTML = `${endurance}`;
+  document.getElementById('charisma__page__4').innerHTML = `${charisma}`;
+  document.getElementById('intelligence__page__4').innerHTML = `${intelligence}`;
+  document.getElementById('agility__page__4').innerHTML = `${agility}`;
+  document.getElementById('luck__page__4').innerHTML = `${luck}`;
+}
+
 //Получение имени игрока
 function changeGameText(x, text){
   x.innerHTML = text;
@@ -74,6 +100,7 @@ function getUserName(){
   gameClickSound.play();
   wowosaName = document.getElementById('character__name').value;
 
+  updateVariablesValues();
   checkUserName();
 }
 
@@ -86,16 +113,14 @@ function checkUserName(){
   } else if ((wowosaName === null || wowosaName === '') && (click === 3)) {   
     wowosaName = 'Идиот';
     if(wowosaName !== null && wowosaName !== '' && wowosaName !== undefined) {
+      changeGameText(dialogueTextPage2, ` &nbsp; &nbsp; ТЫ МНЕ НЕ НРАВИШЬСЯ, ПОНЯТНО?! ОТНЫНЕ ТВОЕ ИМЯ РЯДОВОЙ ИД-И-ОТ!!! <br> ${wowosaName}, напиши свой возраст цифрами и мы узнаем, готов ли ты к службе:`);
       nextPage('page__2', 
         "../images/wowosa_character_974x496.png",
         dialogueContainerPage1,
         actionContainerPage1,
         dialogueContainerPage2,
-        actionContainerPage2,
-        dialogueTextPage2,
-        ` &nbsp; &nbsp; ТЫ МНЕ НЕ НРАВИШЬСЯ, ПОНЯТНО?! ОТНЫНЕ ТВОЕ ИМЯ РЯДОВОЙ ИД-И-ОТ!!! <br> ${wowosaName}, напиши свой возраст цифрами и мы узнаем, готов ли ты к службе:`);     
+        actionContainerPage2);     
     }
-    return wowosaName;
   } else {
     if(wowosaName !== null && wowosaName !== '' && wowosaName !== undefined) {
       nextPage('page__2', 
@@ -103,9 +128,7 @@ function checkUserName(){
         dialogueContainerPage1,
         actionContainerPage1,
         dialogueContainerPage2,
-        actionContainerPage2,
-        dialogueTextPage2,
-        ` &nbsp; &nbsp; ${wowosaName}, напиши свой возраст цифрами и мы узнаем, готов ли ты к службе:`);
+        actionContainerPage2);
     }
   }
 }
@@ -115,6 +138,7 @@ function getUserAge() {
   gameClickSound.play();
   userage = Number( document.getElementById('character__age').value );
 
+  updateVariablesValues();
   checkUserAge();
 }
 
@@ -133,11 +157,7 @@ function checkUserAge(){
       dialogueContainerPage2,
       actionContainerPage2,
       dialogueContainerPage3,
-      actionContainerPage3,
-      dialogueTextPage3,
-      `&nbsp; &nbsp; Отлично ${wowosaName}, я сержант Вовоса и с этого дня ты в моем подчинении! Расскажи о своих навыках:<br>
-      Вы находитесь в системе распределения характеристик SPECIAL, начальный параметр характеристики равен 4, на 7 характеристик вам дается лишь 40 очков, распределяйте их с умом!`);
-    return userage;
+      actionContainerPage3);
   }
 }
 
@@ -166,6 +186,7 @@ function getSpecialParametrs() {
   luck = Number(inputLuck);
   special = strenght + perception + endurance + charisma + intelligence + agility + luck;
 
+  updateVariablesValues();
   checkSpecialParametrs();
 }
 
@@ -181,15 +202,7 @@ function checkSpecialParametrs(){
       dialogueContainerPage3,
       actionContainerPage3,
       dialogueContainerPage4,
-      actionContainerPage4,
-      dialogueTextPage4,
-      `&nbsp; &nbsp; Неплохо, очень неплохо, твои показатели: <br><br> &nbsp; &nbsp; &nbsp; Сила - ${strenght} &nbsp;  Восприятие - ${perception} 
-      &nbsp;  Выносливость - ${endurance} &nbsp; Харизма - ${charisma}  
-      &nbsp;  Интеллект - ${intelligence} &nbsp; Ловкость - ${agility}  
-      &nbsp;  Удача - ${luck} <br><br>
-      &nbsp; &nbsp; Слушай меня внимательно ${wowosaName}, отправляйся на склад и получи силовую броню у интенданта!`
-    )
-    return SPECIAL = [special, specialPoints, strenght, perception, endurance, charisma, intelligence, agility, luck, hitPoints, expirience, lvl, expMax, ostatokPoints];
+      actionContainerPage4);
   }
 }
 

@@ -24,19 +24,12 @@ function playButtonSound() {
   clickButtonSound.play();
 }
 
-function openInfoWindow(container1, container2, container3, textContainer, text, id, way) {
-  container1.style.display = "flex";
-  container2.style.display = "none";
-  container3.style.display = "none";
-  textContainer.innerHTML = text;
-  switchWayById(id, way);
-}
-
-function openInfoWindowWithoutText(container1, container2, container3, id, way) {
+function openInfoWindow(container1, container2, container3, id, way) {
   container1.style.display = "flex";
   container2.style.display = "none";
   container3.style.display = "none";
   switchWayById(id, way);
+  updateVariablesValues();
 }
 
 function closeInfoWindows(container1, container2, container3, id, way, secondId, secondWay) {

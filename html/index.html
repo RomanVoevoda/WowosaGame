@@ -60,18 +60,16 @@
       <area shape="circle" coords="153,647,23" alt="кнопка статуса" id="status__button" onclick="openInfoWindow(
         gameStatusWindow, 
         gameAutomapsWindow, 
-        gameArchivesWindow, 
-        gameStatusText, 
-        `<p>Персонаж ${wowosaName}<br><br> Уровень:&nbsp;${lvl}<br><br> Опыт:&nbsp;${expirience}<br><br> Здоровье:&nbsp;${hitPoints}<br><br> Сила:&nbsp;${strenght}<br><br> Восприятие:&nbsp;${perception}<br><br> Выносливость:&nbsp;${endurance}<br><br> Харизма:&nbsp;${charisma}<br><br> Интеллект:&nbsp;${intelligence}<br><br> Ловкость:&nbsp;${agility}<br><br> Удача:&nbsp;${luck}</p>`, 
+        gameArchivesWindow,  
         'left__bar', 
         '../images/pipboy_left_bar_476x880_status_button_active.png')">
-      <area shape="circle" coords="154,751,23" alt="кнопка карты" id="map__button" onclick="openInfoWindowWithoutText(
+      <area shape="circle" coords="154,751,23" alt="кнопка карты" id="map__button" onclick="openInfoWindow(
         gameAutomapsWindow, 
         gameStatusWindow, 
         gameArchivesWindow, 
         'left__bar', 
         '../images/pipboy_left_bar_476x880_map_button_active.png')">
-      <area shape="circle" coords="154,803,23" alt="кнопка записей" id="archives__button" onclick="openInfoWindowWithoutText(
+      <area shape="circle" coords="154,803,23" alt="кнопка записей" id="archives__button" onclick="openInfoWindow(
         gameArchivesWindow, 
         gameStatusWindow, 
         gameAutomapsWindow, 
@@ -119,7 +117,19 @@
 
         <!--Вначале контейнеры по кнопкам слева от экрана-->
         <div class="game__status__container">
-          <div class="game__info__text" id="game__status__list"></div>
+          <div class="game__info__text" id="game__status__list">
+            <p>Персонаж <span id="wowosaName__info"></span><br><br> 
+              Уровень:&nbsp;<span id="lvl__info"></span><br><br> 
+              Опыт:&nbsp;<span id="expirience__info"></span><br><br> 
+              Здоровье:&nbsp;<span id="hitPoints__info"></span><br><br> 
+              Сила:&nbsp;<span id="strenght__info"></span><br><br> 
+              Восприятие:&nbsp;<span id="perception__info"></span><br><br> 
+              Выносливость:&nbsp;<span id="endurance__info"></span><br><br> 
+              Харизма:&nbsp;<span id="charisma__info"></span><br><br> 
+              Интеллект:&nbsp;<span id="intelligence__info"></span><br><br> 
+              Ловкость:&nbsp;<span id="agility__info"></span><br><br> 
+              Удача:&nbsp;<span id="luck__info"></span></p>
+          </div>
           <img src="../images/game_stats_image_487x770.png" id="game__status__image">
         </div>
         <div class="game__automaps__container">
@@ -150,7 +160,7 @@
         <!--Дальше идут игровые контейнеры для других страниц, их отображение меняется функциями в game.js--> 
 
         <div class="dialogue__container" id="dialogue__container__page__2">
-          <p class="dialogue" id="dialogue__text__2"></p>
+          <p class="dialogue" id="dialogue__text__2">&nbsp; &nbsp; <span id="wowosaName__page__2"></span> напиши свой возраст цифрами и мы узнаем, готов ли ты к службе:</p>
         </div>
 
         <div class="game__action__container" id="game__action__container__page__2">
@@ -168,7 +178,8 @@
             dialogueContainerPage2,
             hiddenActionContainerPage2,
             dialogueContainerPage3,
-            actionContainerPage3,
+            actionContainerPage3);
+            changeGameText(
             dialogueTextPage3,
             `&nbsp; &nbsp; Отлично ${wowosaName}, я сержант Вовоса и с этого дня ты в моем подчинении! Расскажи о своих навыках. Вы находитесь в системе распределения характеристик SPECIAL, начальный параметр характеристики равен 4, на 7 характеристик вам дается лишь 40 очков, распределяйте их с умом!`);">Да</button>
             <button type="button" class="game__button" id="no__button" onclick="notPassedAgeLimit()">Нет</button>
@@ -178,7 +189,11 @@
         <!--Страница 3(SPECIAL)-->
 
         <div class="dialogue__container" id="dialogue__container__page__3">
-          <p class="dialogue" id="dialogue__text__3"></p>
+          <p class="dialogue" id="dialogue__text__3">
+            &nbsp; &nbsp; Отлично <span id="wowosaName__page__3"></span>, я сержант Вовоса и с этого дня ты в моем подчинении! Расскажи о своих навыках:<br>
+            Вы находитесь в системе распределения характеристик SPECIAL, начальный параметр характеристики равен 4, 
+            на 7 характеристик вам дается лишь 40 очков, распределяйте их с умом!
+          </p>
         </div>
 
         <div class="game__action__container" id="game__action__container__page__3">
@@ -282,7 +297,17 @@
         <!--4 страница-->
 
         <div class="dialogue__container" id="dialogue__container__page__4">
-          <p class="dialogue" id="dialogue__text__4"></p>
+          <p class="dialogue" id="dialogue__text__4">
+            &nbsp; &nbsp; Неплохо, очень неплохо, твои показатели: <br><br> 
+            &nbsp; &nbsp; &nbsp; Сила - <span id="strenght__page__4"></span>, 
+            &nbsp;  Восприятие - <span id="perception__page__4"></span>,
+            &nbsp;  Выносливость - <span id="endurance__page__4"></span>,
+            &nbsp; Харизма - <span id="charisma__page__4"></span>,  
+            &nbsp;  Интеллект - <span id="intelligence__page__4"></span>, 
+            &nbsp; Ловкость - <span id="agility__page__4"></span>,  
+            &nbsp;  Удача - <span id="luck__page__4"></span> <br><br>
+            &nbsp; &nbsp; Слушай меня внимательно <span id="wowosaName__page__4"></span>, отправляйся на склад и получи силовую броню у интенданта!
+          </p>
         </div>
 
         <div class="game__action__container" id="game__action__container__page__4">
