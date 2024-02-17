@@ -43,13 +43,13 @@ let click = 1;
 submitName.addEventListener('click', () => ++click );
 
 function nextPage(pageid, imgsrc, container1, container2, container3, container4) {
-  updateVariablesValues();
   gamePage.setAttribute("id", pageid);
   gameImage.setAttribute("src", imgsrc);
   container1.style.display = "none";
   container2.style.display = "none";
   container3.style.display = "flex";
   container4.style.display = "flex";
+  updateVariablesValues();
 }
 
 function death() {
@@ -106,14 +106,14 @@ function getUserName(){
 
 function checkUserName(){
   if ((wowosaName === null || wowosaName === '') && (click === 1)) {
-    changeGameText(dialogueText, ' &nbsp; &nbsp; ИДИОТ! ТЫ НЕ МОЖЕШЬ ВВЕСТИ СОБСТВЕННОЕ ИМЯ?!?! Давай представим, что ты ПОУМНЕЛ, введи свое имя, нажимая БУКОВКИ на клавиатуре:');
+    changeGameText(dialogueText, 'ИДИОТ! ТЫ НЕ МОЖЕШЬ ВВЕСТИ СОБСТВЕННОЕ ИМЯ?!?! Давай представим, что ты ПОУМНЕЛ, введи свое имя, нажимая БУКОВКИ на клавиатуре:');
     wowosaName = document.getElementById('character__name').value;
   } else if ((wowosaName === null || wowosaName === '') && (click === 2)) {
-    changeGameText(dialogueText, ' &nbsp; &nbsp; Рядовой, вы все еще без имени, я дал вам прямой приказ ввести имя, НЕ СМЕЙ ПОКАЗЫВАТЬСЯ МНЕ НА ГЛАЗА, ПОКА НЕ ВВЕДЕШЬ ИМЯ');
+    changeGameText(dialogueText, 'Рядовой, вы все еще без имени, я дал вам прямой приказ ввести имя, НЕ СМЕЙ ПОКАЗЫВАТЬСЯ МНЕ НА ГЛАЗА, ПОКА НЕ ВВЕДЕШЬ ИМЯ');
   } else if ((wowosaName === null || wowosaName === '') && (click === 3)) {   
     wowosaName = 'Идиот';
     if(wowosaName !== null && wowosaName !== '' && wowosaName !== undefined) {
-      changeGameText(dialogueTextPage2, ` &nbsp; &nbsp; ТЫ МНЕ НЕ НРАВИШЬСЯ, ПОНЯТНО?! ОТНЫНЕ ТВОЕ ИМЯ РЯДОВОЙ ИД-И-ОТ!!! <br> ${wowosaName}, напиши свой возраст цифрами и мы узнаем, готов ли ты к службе:`);
+      changeGameText(dialogueTextPage2, `ТЫ МНЕ НЕ НРАВИШЬСЯ, ПОНЯТНО?! ОТНЫНЕ ТВОЕ ИМЯ РЯДОВОЙ ИД-И-ОТ!!! <br> ${wowosaName}, напиши свой возраст цифрами и мы узнаем, готов ли ты к службе:`);
       nextPage('page__2', 
         "../images/wowosa_character_974x496.png",
         dialogueContainerPage1,
@@ -144,11 +144,11 @@ function getUserAge() {
 
 function checkUserAge(){
   if ( isNaN(userage) ) {
-    changeGameText(dialogueTextPage2, '&nbsp; &nbsp; ЦИ-ФРА-МИ, ЦИФРАМИ ИДИОТ!');
+    changeGameText(dialogueTextPage2, 'ЦИ-ФРА-МИ, ЦИФРАМИ ИДИОТ!');
   } else if(userage < 1) {
-    changeGameText(dialogueTextPage2, '&nbsp; &nbsp; Хочешь сказать ты ещё не родился? И как же ты стоишь предо мной? Назови реальный возраст.');
+    changeGameText(dialogueTextPage2, 'Хочешь сказать ты ещё не родился? И как же ты стоишь предо мной? Назови реальный возраст.');
   }else if (userage < 18) {
-    changeGameText(dialogueTextPage2, '&nbsp; &nbsp; Ты ещё совсем мал и умрешь в пустошах без помощи. Родители разрешили тебе играть?');
+    changeGameText(dialogueTextPage2, 'Ты ещё совсем мал и умрешь в пустошах без помощи. Родители разрешили тебе играть?');
     actionContainerPage2.style.display = "none";
     hiddenActionContainerPage2.style.display = "flex";
   } else {
@@ -163,7 +163,7 @@ function checkUserAge(){
 
 function notPassedAgeLimit() {
   gameClickSound.play();
-  changeGameText(dialogueTextPage2, '&nbsp; &nbsp; Ты ещё совсем мал и умрешь в пустошах без помощи. Игровые процессы выключаются.');
+  changeGameText(dialogueTextPage2, 'Ты ещё совсем мал и умрешь в пустошах без помощи. Игровые процессы выключаются.');
   setTimeout(turnOffGame, 3000);
 }
 
@@ -192,7 +192,7 @@ function getSpecialParametrs() {
 
 function checkSpecialParametrs(){
   if (special > specialPoints) {
-    changeGameText(dialogueTextPage3, "&nbsp; &nbsp; Это ты не умеешь считать или я? Не больше 40 очков.");
+    changeGameText(dialogueTextPage3, "Это ты не умеешь считать или я? Не больше 40 очков.");
   } else {
     special = strenght + perception + endurance + charisma + intelligence + agility + luck;//Вычисление всех потраченных очков
     hitPoints = Math.round(((endurance * 2) + (strenght / 2)) * 100);

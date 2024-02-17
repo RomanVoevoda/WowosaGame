@@ -49,6 +49,7 @@
   font-size: 20px;
   font-family:'Franklin Gothic Medium';
   color: rgb(207,150,55);
+  text-indent: 20px;
 }
 
 .game__action__container {
