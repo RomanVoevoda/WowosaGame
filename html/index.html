@@ -132,9 +132,28 @@
           </div>
           <img src="../images/game_stats_image_487x770.png" id="game__status__image">
         </div>
+
+
         <div class="game__automaps__container">
-          <p class="game__info__header">НАСТРОЙКИ</p>
+          <div id="game__automaps__header">
+            <i class="fa-solid fa-gears"></i><br>
+            <p class="game__info__header">НАСТРОЙКИ</p>
+          </div>
+          <div id="game__automaps__settings">
+            <form class="volume__settings__form">
+              <label for="music__volume__settings" class="game__info__text">Громкость Музыки</label><br>
+              <input id="music__volume__settings" name="music__volume__settings" value="30" type="range" min="0" max="100" step="1" 
+              onchange="setVolume(audio, 'music__volume__settings')">
+            </form>  
+            <form class="volume__settings__form">
+              <label for="sounds__volume__settings" class="game__info__text">Громкость Звуков</label><br>
+              <input id="sounds__volume__settings" name="music__volume__settings" value="30" type="range" min="0" max="100" step="1" 
+              onchange="setVolume(gameClickSound,'sounds__volume__settings'); setVolume(startSound,'sounds__volume__settings'); setVolume(clickButtonSound,'sounds__volume__settings')">
+            </form>
+          </div>
         </div>
+
+
         <div class="game__archives__container">
           <p class="game__info__header">СПИСОК ЗАДАНИЙ</p>
         </div>

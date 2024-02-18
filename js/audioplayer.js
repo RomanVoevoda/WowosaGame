@@ -78,6 +78,11 @@ function setProgress(e) {
   audio.currentTime = (clickX / width) * duration;
 }
 
+function setVolume(audioElement, inputID){
+  let currentVolume = Number(document.getElementById(inputID).value) / 100;
+  audioElement.volume = currentVolume;
+}
+
 //Прослушиватель событий
 playButton.addEventListener('click', () => {
   const isPlaying = playerContainer.classList.contains('play');
@@ -98,3 +103,9 @@ audio.addEventListener('timeupdate', updateProgress);
 progressContainer.addEventListener('click', setProgress);
 
 audio.addEventListener('ended', nextSong);
+
+//Для начальной громкости
+audio.volume = 0.3;
+gameClickSound.volume = 0.3;
+startSound.volume = 0.3;
+clickButtonSound.volume = 0.3;
