@@ -66,29 +66,40 @@ function turnOffGame() {
 deathVideo.addEventListener("ended", turnOffGame)
 
 //Обновление данных игрока
-function updateVariablesValues(){
-  document.getElementById('wowosaName__info').innerHTML = `${wowosaName}`;
-  document.getElementById('wowosaName__page__2').innerHTML = `${wowosaName}`;
-  document.getElementById('wowosaName__page__3').innerHTML = `${wowosaName}`;
-  document.getElementById('wowosaName__page__4').innerHTML = `${wowosaName}`;
-  document.getElementById('lvl__info').innerHTML = `${lvl}`;
-  document.getElementById('expirience__info').innerHTML = `${expirience}`;
-  document.getElementById('hitPoints__info').innerHTML = `${hitPoints}`;
-  document.getElementById('strenght__info').innerHTML = `${strenght}`;
-  document.getElementById('perception__info').innerHTML = `${perception}`;
-  document.getElementById('endurance__info').innerHTML = `${endurance}`;
-  document.getElementById('charisma__info').innerHTML = `${charisma}`;
-  document.getElementById('intelligence__info').innerHTML = `${intelligence}`;
-  document.getElementById('agility__info').innerHTML = `${agility}`;
-  document.getElementById('luck__info').innerHTML = `${luck}`;
 
-  document.getElementById('strenght__page__4').innerHTML = `${strenght}`;
-  document.getElementById('perception__page__4').innerHTML = `${perception}`;
-  document.getElementById('endurance__page__4').innerHTML = `${endurance}`;
-  document.getElementById('charisma__page__4').innerHTML = `${charisma}`;
-  document.getElementById('intelligence__page__4').innerHTML = `${intelligence}`;
-  document.getElementById('agility__page__4').innerHTML = `${agility}`;
-  document.getElementById('luck__page__4').innerHTML = `${luck}`;
+function updateVariablesValues(){
+  let nameSpans = document.getElementsByClassName('wowosaName__container');
+  Array.from(nameSpans).forEach((element) => element.innerHTML = `${wowosaName}`);
+
+  let lvlSpans = document.getElementsByClassName('lvl__container');
+  Array.from(lvlSpans).forEach((element) => element.innerHTML = `${lvl}`);
+
+  let expirienceSpans = document.getElementsByClassName('expirience__container');
+  Array.from(expirienceSpans).forEach((element) => element.innerHTML = `${expirience}`);
+
+  let hitPointsSpans = document.getElementsByClassName('hitPoints__container');
+  Array.from(hitPointsSpans).forEach((element) => element.innerHTML = `${hitPoints}`);
+
+  let strenghtSpans = document.getElementsByClassName('strenght__container');
+  Array.from(strenghtSpans).forEach((element) => element.innerHTML = `${strenght}`);
+
+  let perceptionSpans = document.getElementsByClassName('perception__container');
+  Array.from(perceptionSpans).forEach((element) => element.innerHTML = `${perception}`);
+
+  let enduranceSpans = document.getElementsByClassName('endurance__container');
+  Array.from(enduranceSpans).forEach((element) => element.innerHTML = `${endurance}`);
+
+  let charismaSpans = document.getElementsByClassName('charisma__container');
+  Array.from(charismaSpans).forEach((element) => element.innerHTML = `${charisma}`);
+
+  let intelligenceSpans = document.getElementsByClassName('intelligence__container');
+  Array.from(intelligenceSpans).forEach((element) => element.innerHTML = `${intelligence}`);
+
+  let agilitySpans = document.getElementsByClassName('agility__container');
+  Array.from(agilitySpans).forEach((element) => element.innerHTML = `${agility}`);
+
+  let luckSpans = document.getElementsByClassName('luck__container');
+  Array.from(luckSpans).forEach((element) => element.innerHTML = `${luck}`);
 }
 
 //Получение имени игрока
