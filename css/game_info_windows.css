@@ -65,12 +65,39 @@
 
 #music__volume__settings, #sounds__volume__settings {
   width: 400px;
-  color: rgb(207,150,55);
   cursor: pointer;
-  background-color: darkslategray;
 }
 #music__volume__settings:focus, #sounds__volume__settings:focus{
   outline: 0;
+}
+
+input[type="range"]{
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+  -webkit-appearance: none; 
+  appearance: none;
+  height: 10px;
+  color: rgb(207,150,55);
+  border-style: hidden;
+  border-radius: 15px;
+  border-width: 1px;
+  background-color: darkslategray;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 10px;
+  height: 24px;
+  margin-top: -7px;
+  background-color: rgb(207,150,55);
+  border-radius: 2px;
+}
+input[type="range"]:focus::-webkit-slider-thumb {
+  box-shadow: 0px 0px 10px 10px rgba(0,0,0,0.50);
 }
 
 #game__automaps__header{
